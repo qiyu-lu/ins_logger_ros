@@ -12,7 +12,7 @@ ros:
 
 record:
   enabled: true
-  out_dir: /home/sd101t/ins-d/data/ins_rviz_run
+  out_dir: data/ins_rviz_run
   file_name: ins_raw.csv
   schema: minimal
 

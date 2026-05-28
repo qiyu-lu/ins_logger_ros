@@ -19,7 +19,7 @@
 默认配置文件：
 
 ```bash
-/home/sd101t/ins-d/device-driver/my_ins_logger/ins_gt_logger_ros/ins_gt_logger_ros/src/config/ins_gt_logger.yaml
+config/ins_gt_logger.yaml
 ```
 
 示例：
@@ -39,7 +39,7 @@ ros:
 
 record:
   enabled: true
-  out_dir: /home/sd101t/ins-d/data/ins_rviz_run
+  out_dir: data/ins_rviz_run
   file_name: ins_raw.csv
   schema: minimal
 
@@ -75,7 +75,7 @@ convert:
 | 参数 | 含义 | 可选项/示例 |
 | --- | --- | --- |
 | `enabled` | 是否记录 CSV 文件。 | `true`, `false` |
-| `out_dir` | 记录文件输出目录。 | `/home/sd101t/ins-d/data/ins_rviz_run` |
+| `out_dir` | 记录文件输出目录。相对路径会以运行 `roslaunch` 或 `rosrun` 时的当前目录为基准。 | `data/ins_rviz_run`, `/tmp/ins_rviz_run` |
 | `file_name` | 记录文件名。 | 默认 `ins_raw.csv` |
 | `schema` | CSV 保存字段集合。 | `minimal`, `full` |
 
@@ -99,7 +99,7 @@ convert:
 
 ```bash
 source /opt/ros/noetic/setup.bash
-cd /home/sd101t/ins-d/device-driver/my_ins_logger/ins_gt_logger_ros/ins_gt_logger_ros
+cd path/to/ins_gt_logger_ros_workspace
 catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 source devel/setup.bash
 ```
@@ -124,7 +124,7 @@ roslaunch ins_gt_logger_ros ins_gt_rviz.launch
 
 ```bash
 roslaunch ins_gt_logger_ros ins_gt_rviz.launch \
-  config:=/home/sd101t/ins-d/device-driver/my_ins_logger/ins_gt_logger_ros/ins_gt_logger_ros/src/config/ins_gt_logger.yaml
+  config:=config/ins_gt_logger.yaml
 ```
 
 只启动发布节点，不打开 RViz：
@@ -147,16 +147,16 @@ roslaunch ins_gt_logger_ros ins_gt_rviz.launch open_rviz:=false
 
 ```bash
 rosrun ins_gt_logger_ros ins_gt_convert \
-  --config /home/sd101t/ins-d/device-driver/my_ins_logger/ins_gt_logger_ros/ins_gt_logger_ros/src/config/ins_gt_logger.yaml
+  --config config/ins_gt_logger.yaml
 ```
 
 也可以临时覆盖输入输出路径：
 
 ```bash
 rosrun ins_gt_logger_ros ins_gt_convert \
-  --config /home/sd101t/ins-d/device-driver/my_ins_logger/ins_gt_logger_ros/ins_gt_logger_ros/src/config/ins_gt_logger.yaml \
-  --input /home/sd101t/ins-d/data/ins_rviz_run/ins_raw.csv \
-  --output /home/sd101t/ins-d/data/ins_rviz_run/gt.tum
+  --config config/ins_gt_logger.yaml \
+  --input data/ins_rviz_run/ins_raw.csv \
+  --output data/ins_rviz_run/gt.tum
 ```
 
 TUM 输出格式：

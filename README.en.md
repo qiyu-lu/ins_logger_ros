@@ -14,7 +14,7 @@ INS output packets:
 Edit the default config:
 
 ```bash
-/home/sd101t/ins-d/device-driver/my_ins_logger/ins_gt_logger_ros/ins_gt_logger_ros/src/config/ins_gt_logger.yaml
+config/ins_gt_logger.yaml
 ```
 
 Important keys:
@@ -28,7 +28,7 @@ serial:
 
 record:
   enabled: true
-  out_dir: /home/sd101t/ins-d/data/ins_rviz_run
+  out_dir: data/ins_rviz_run
   file_name: ins_raw.csv
   schema: minimal      # minimal or full
 
@@ -46,7 +46,7 @@ saves decoded IMU, magnetic, barometric, GNSS velocity, and latency fields.
 
 ```bash
 source /opt/ros/noetic/setup.bash
-cd /home/sd101t/ins-d/device-driver/my_ins_logger/ins_gt_logger_ros/ins_gt_logger_ros
+cd path/to/ins_gt_logger_ros_workspace
 catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 source devel/setup.bash
 ```
@@ -71,7 +71,7 @@ Use a different config file if needed:
 
 ```bash
 roslaunch ins_gt_logger_ros ins_gt_rviz.launch \
-  config:=/home/sd101t/ins-d/device-driver/my_ins_logger/ins_gt_logger_ros/ins_gt_logger_ros/src/config/ins_gt_logger.yaml
+  config:=config/ins_gt_logger.yaml
 ```
 
 Run only the publisher:
@@ -95,16 +95,16 @@ After recording, generate a TUM trajectory:
 
 ```bash
 rosrun ins_gt_logger_ros ins_gt_convert \
-  --config /home/sd101t/ins-d/device-driver/my_ins_logger/ins_gt_logger_ros/ins_gt_logger_ros/src/config/ins_gt_logger.yaml
+  --config config/ins_gt_logger.yaml
 ```
 
 Override input or output paths:
 
 ```bash
 rosrun ins_gt_logger_ros ins_gt_convert \
-  --config /home/sd101t/ins-d/device-driver/my_ins_logger/ins_gt_logger_ros/ins_gt_logger_ros/src/config/ins_gt_logger.yaml \
-  --input /home/sd101t/ins-d/data/ins_rviz_run/ins_raw.csv \
-  --output /home/sd101t/ins-d/data/ins_rviz_run/gt.tum
+  --config config/ins_gt_logger.yaml \
+  --input data/ins_rviz_run/ins_raw.csv \
+  --output data/ins_rviz_run/gt.tum
 ```
 
 TUM layout:
