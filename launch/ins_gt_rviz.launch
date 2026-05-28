@@ -1,0 +1,12 @@
+<launch>
+  <arg name="config" default="$(find ins_gt_logger_ros)/config/ins_gt_logger.yaml"/>
+  <arg name="open_rviz" default="true"/>
+  <arg name="rviz_config" default="$(find ins_gt_logger_ros)/rviz/ins_gt.rviz"/>
+
+  <rosparam command="load" file="$(arg config)"/>
+
+  <node name="ins_gt_rviz_node" pkg="ins_gt_logger_ros" type="ins_gt_rviz_node" output="screen">
+  </node>
+
+  <node if="$(arg open_rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)" output="screen"/>
+</launch>

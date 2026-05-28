@@ -1,0 +1,23 @@
+serial:
+  port: /dev/ttyUSB0
+  baud: 460800
+  packet: opvt2a
+  poll_hz: 100.0
+
+ros:
+  frame_id: map
+  child_frame_id: ins_link
+  publish_tf: true
+  path_max_size: 20000
+
+record:
+  enabled: true
+  out_dir: /home/sd101t/ins-d/data/ins_rviz_run
+  file_name: ins_raw.csv
+  schema: minimal
+
+convert:
+  input_file: ""
+  output_file: ""
+  output_format: tum
+  origin: first_valid

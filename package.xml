@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ins_gt_logger_ros</name>
+  <version>0.1.0</version>
+  <description>SDK-based Inertial Labs INS ground-truth RViz publisher.</description>
+
+  <maintainer email="sd101t@example.local">sd101t</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>tf2</depend>
+  <depend>tf2_ros</depend>
+
+  <export/>
+</package>
